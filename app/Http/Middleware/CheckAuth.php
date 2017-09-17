@@ -18,7 +18,7 @@ class CheckAuth
         $userName = $request->headers->get('X-UserName');
         $password = $request->headers->get('X-Password');
         if (isset($userName) && 'admin' === $userName) {
-            if (isset($password) && md5(123456) === $password) {
+            if (isset($password) && md5('123456') === md5($password)) {
                 return $next($request);
             } else {
                 return abort(401);
